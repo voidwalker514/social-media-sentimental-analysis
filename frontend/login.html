@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — SentiScope</title>
+    <meta name="description" content="Sign in to SentiScope to analyze social media sentiment with AI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page login-page">
+
+    <div class="login-card">
+        <!-- Logo -->
+        <div class="login-logo">
+            <div class="login-logo-icon">📊</div>
+            <h1>SentiScope</h1>
+            <p>Social Media Sentiment Intelligence</p>
+        </div>
+
+        <!-- Username -->
+        <div class="form-group">
+            <label class="form-label" for="username">Username</label>
+            <div class="input-wrap">
+                <span class="input-icon">👤</span>
+                <input
+                    id="username"
+                    class="form-input"
+                    type="text"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                    onkeydown="handleLoginKey(event)"
+                >
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <div class="input-wrap">
+                <span class="input-icon">🔒</span>
+                <input
+                    id="password"
+                    class="form-input"
+                    type="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    onkeydown="handleLoginKey(event)"
+                >
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="login-btn-wrap">
+            <button id="loginBtn" class="btn btn-primary" onclick="login()">
+                <span id="loginBtnText">Sign In</span>
+            </button>
+        </div>
+
+        <!-- Error message -->
+        <p id="loginResult" class="login-error" role="alert" aria-live="polite"></p>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

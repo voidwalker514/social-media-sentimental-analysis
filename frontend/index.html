@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — SentiScope</title>
+    <meta name="description" content="Analyze social media sentiment in real-time with SentiScope's AI-powered dashboard.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- ── Navbar ──────────────────────────────────────────── -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a class="navbar-brand" href="index.html" aria-label="SentiScope Home">
+        <div class="brand-icon">📊</div>
+        SentiScope
+    </a>
+    <div class="navbar-actions">
+        <button id="themeToggleBtn" class="btn-icon" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark mode">🌙</button>
+        <button id="logoutBtn" class="btn btn-ghost" onclick="logout()">
+            <span>Sign Out</span>
+        </button>
+    </div>
+</nav>
+
+<!-- ── Dashboard ──────────────────────────────────────── -->
+<main class="page dashboard" role="main">
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <h1>Sentiment Dashboard</h1>
+        <p>Analyze text and track sentiment trends in real-time</p>
+    </header>
+
+    <!-- Stats Row -->
+    <section class="stats-row" aria-label="Sentiment statistics">
+        <div class="stat-card pos">
+            <span class="stat-label">✅ Positive</span>
+            <span class="stat-value" id="statPositive">0</span>
+        </div>
+        <div class="stat-card neu">
+            <span class="stat-label">⚖️ Neutral</span>
+            <span class="stat-value" id="statNeutral">0</span>
+        </div>
+        <div class="stat-card neg">
+            <span class="stat-label">❌ Negative</span>
+            <span class="stat-value" id="statNegative">0</span>
+        </div>
+    </section>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+
+        <!-- Left Column -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+            <!-- Analyze Card -->
+            <section class="card" aria-label="Text analysis">
+                <h2 class="card-title">
+                    <span class="icon">✍️</span>
+                    Analyze Text
+                </h2>
+
+                <div class="textarea-wrap">
+                    <textarea
+                        id="inputText"
+                        class="form-textarea"
+                        placeholder="Type or paste any social media post, tweet, or comment here…"
+                        maxlength="1000"
+                        aria-label="Text to analyze"
+                        oninput="updateCharCount()"
+                    ></textarea>
+                    <span class="char-count" id="charCount">0 / 1000</span>
+                </div>
+
+                <button id="analyzeBtn" class="btn btn-primary" onclick="analyze()" aria-label="Analyze sentiment">
+                    <span id="analyzeBtnContent">⚡ Analyze Sentiment</span>
+                </button>
+
+                <!-- Result -->
+                <div id="result-container" role="status" aria-live="polite">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- History Card -->
+            <section class="card" aria-label="Analysis history">
+                <h2 class="card-title">
+                    <span class="icon">🕐</span>
+                    Recent Analyses
+                </h2>
+                <div id="historyList" class="history-list">
+                    <p class="history-empty">No analyses yet. Analyze some text to get started!</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Column: Chart -->
+        <section class="card chart-card" aria-label="Sentiment chart">
+            <h2 class="card-title">
+                <span class="icon">📈</span>
+                Sentiment Insights
+            </h2>
+            <div class="chart-wrap">
+                <canvas id="chart" aria-label="Sentiment distribution chart"></canvas>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
