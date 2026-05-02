@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pandas
+scikit-learn
+bcrypt
+pydantic-settings
+python-multipart
+python-dotenv
